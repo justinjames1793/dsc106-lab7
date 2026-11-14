@@ -8,3 +8,31 @@ body {
   margin: auto;
   padding: 1em;
 }
+
+/* Header: title on the left, time filter pushed to the right */
+header {
+  display: flex;
+  gap: 1em;
+  align-items: baseline;
+  width: 100%;
+}
+
+header label {
+  margin-left: auto;
+}
+
+#time-slider {
+  width: 20em;
+}
+
+/* Own line, so changing text doesn't make the slider jump around */
+header time,
+header em {
+  display: block;
+}
+
+header em {
+  color: #888;
+  font-style: italic;
+}
+

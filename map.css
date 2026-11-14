@@ -23,3 +23,44 @@ body {
   height: 100%;
   pointer-events: none; /* let clicks/drags pass through to the map */
 }
+
+/* Shared color logic for station circles and legend swatches */
+#map circle,
+.legend > div {
+  --color-departures: steelblue;
+  --color-arrivals: darkorange;
+  --color: color-mix(
+    in oklch,
+    var(--color-departures) calc(100% * var(--departure-ratio)),
+    var(--color-arrivals)
+  );
+}
+
+#map circle {
+  fill: var(--color);
+  fill-opacity: 60%;
+  stroke: white;
+  stroke-width: 1;
+  pointer-events: auto; /* re-enable hover so <title> tooltips show */
+}
+
+/* Legend (Design 1: blocks) */
+.legend {
+  display: flex;
+  gap: 1px;
+  width: 100%;
+  margin-block: 1em;
+}
+
+.legend > div {
+  flex: 1;
+  padding: 0.4em 1.5em;
+  background: var(--color);
+  color: white;
+  font-weight: 600;
+}
+
+.legend > div:nth-child(1) { text-align: left; }
+.legend > div:nth-child(2) { text-align: center; }
+.legend > div:nth-child(3) { text-align: right; }
+
